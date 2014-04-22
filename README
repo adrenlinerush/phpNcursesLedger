@@ -1,0 +1,33 @@
+#################################
+#  Really Crappy Ledger.php     #
+#  Wrote to play with ncurses   #
+#  Written by Austin Mount      #
+#  GPL2 License Applies         #
+#################################
+
+
+Install ncurses for php:
+# apt-get install php5-dev libncursesw5-dev php-pear
+# pecl install ncurses
+
+Update /etc/php5/cli/php.ini near "Dynamic Extensions"
+extension=ncurses.so
+
+Check for ncurses:  php -m | grep -i curs
+
+Create a ledger file with the starting balance in same dir as ledger.php:
+# vi ledger.csv
+i
+2003.45
+escape
+:wq
+
+Run ledger:
+# php ledger.php
+
+Usage:
+Escape or q to Quit
+a to Add an Entry
+d to Delete and Entry
+c to Toggle Cleared
+Page Keys and Arrows to Scroll up and down
