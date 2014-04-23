@@ -263,7 +263,8 @@ function renderScreen($currently_selected){
           $pnd -= $elements[5];
           $qtypnd ++;
         }
-        if ((($n >= $currently_selected) && ($n >= ($currently_selected-($lines-15)))) || (($currently_selected <= ($lines-15)) && ($n <= ($lines-15)))) { 
+        if (($n >= $currently_selected) && ($n <= ($currently_selected+($lines-18)))) { 
+          $l=($n-$currently_selected)+1;
           if ($n == $currently_selected){
             ncurses_wattron($dw,NCURSES_A_REVERSE);
             ncurses_wattron($nw,NCURSES_A_REVERSE); 
@@ -273,13 +274,13 @@ function renderScreen($currently_selected){
             ncurses_wattron($ww,NCURSES_A_REVERSE); 
             ncurses_wattron($lw,NCURSES_A_REVERSE); 
           }
-          ncurses_mvwaddstr($dw, $n, 1, $elements[0]);
-          ncurses_mvwaddstr($nw, $n, 1, $elements[1]);
-          ncurses_mvwaddstr($sw, $n, 1, $elements[2]);
-          ncurses_mvwaddstr($cw, $n, 1, $elements[3]);
-          ncurses_mvwaddstr($aw, $n, 1, $elements[4]);
-          ncurses_mvwaddstr($ww, $n, 1, $elements[5]);
-          ncurses_mvwaddstr($lw, $n, 1, $bal);
+          ncurses_mvwaddstr($dw, $l, 1, $elements[0]);
+          ncurses_mvwaddstr($nw, $l, 1, $elements[1]);
+          ncurses_mvwaddstr($sw, $l, 1, $elements[2]);
+          ncurses_mvwaddstr($cw, $l, 1, $elements[3]);
+          ncurses_mvwaddstr($aw, $l, 1, $elements[4]);
+          ncurses_mvwaddstr($ww, $l, 1, $elements[5]);
+          ncurses_mvwaddstr($lw, $l, 1, $bal);
           if ($n == $currently_selected){
             ncurses_wattroff($dw,NCURSES_A_REVERSE);
             ncurses_wattroff($nw,NCURSES_A_REVERSE);
