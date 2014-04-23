@@ -34,7 +34,7 @@ while(1) {
   }elseif($input == "97") {
     //"a" key (Add Entry)
     $entries = addEntry();
-    renderScreen($entries);
+    renderScreen($entries-15);
   }elseif($input == "99") {
     //"c" key (Cleared)
     toggleCleared($currently_selected);
