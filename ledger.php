@@ -38,7 +38,13 @@ while(1) {
   }elseif($input == "99") {
     //"c" key (Cleared)
     toggleCleared($currently_selected);
-    renderScreen($entries);
+    renderScreen($currently_selected);
+  }elseif($input == NCURSES_KEY_END){
+    $currently_selected=$entries-15;
+    renderScreen($currently_selected);
+  }elseif($input == NCURSES_KEY_HOME){
+    $currently_selected=1;
+    renderScreen($currently_selected);
   }
 }
 
@@ -129,14 +135,14 @@ function addEntry(){
   }   
   $input = "";
   $edate = "";
-  ncurses_mvwaddstr($iw, 3, 1, "Date (" . date("m/d/Y") . "):");
+  ncurses_mvwaddstr($iw, 3, 1, "Date (" . date("Y/m/d") . "):");
   while($input != 13) {
     $input = ncurses_wgetch($iw);
     if ($input !=13) {
       $edate .= chr($input);
     }
   }
-  if ($edate == "") { $edate = date("m/d/Y"); }
+  if ($edate == "") { $edate = date("Y/m/d"); }
   $input = "";
   $desc = "";
   ncurses_mvwaddstr($iw, 4, 1, "Description? ");
@@ -298,10 +304,10 @@ function renderScreen($currently_selected){
   }
   fclose($handle);
 
-  ncurses_mvwaddstr($iw, 2, 1, "Cleared: $clrd");
-  ncurses_mvwaddstr($iw, 3, 1, "Future: $bal");
-  ncurses_mvwaddstr($iw, 4, 1, "Pending: $pnd");
-  ncurses_mvwaddstr($iw, 5, 1, "Qty Pending: $qtypnd");
+  ncurses_mvwaddstr($iw, 2, 1, "Cleared: " . number_format($clrd,2));
+  ncurses_mvwaddstr($iw, 3, 1, "Future: " . number_format($bal,2));
+  ncurses_mvwaddstr($iw, 4, 1, "Pending: " . number_format($pnd,2));
+  ncurses_mvwaddstr($iw, 5, 1, "Qty Pending: " . $qtypnd);
 
   ncurses_refresh();
   ncurses_wrefresh($lw);
