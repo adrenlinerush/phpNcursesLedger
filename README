@@ -31,3 +31,5 @@ a to Add an Entry
 d to Delete and Entry
 c to Toggle Cleared
 Page Keys and Arrows to Scroll up and down
+Home to goto first entry
+End takes you to 15 entries from last
