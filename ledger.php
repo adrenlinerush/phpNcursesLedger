@@ -280,7 +280,7 @@ function renderScreen($currently_selected){
           ncurses_mvwaddstr($cw, $l, 1, $elements[3]);
           ncurses_mvwaddstr($aw, $l, 1, $elements[4]);
           ncurses_mvwaddstr($ww, $l, 1, $elements[5]);
-          ncurses_mvwaddstr($lw, $l, 1, $bal);
+          ncurses_mvwaddstr($lw, $l, 1, number_format($bal,2));
           if ($n == $currently_selected){
             ncurses_wattroff($dw,NCURSES_A_REVERSE);
             ncurses_wattroff($nw,NCURSES_A_REVERSE);
